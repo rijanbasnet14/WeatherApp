@@ -1,9 +1,9 @@
 package org.example.weatherapp.Controller;
 
-import jakarta.annotation.PostConstruct;
 import org.example.weatherapp.dto.WeatherResponseDTO;
 import org.example.weatherapp.service.WeatherService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -16,7 +16,10 @@ public class WeatherController {
     }
 
     @GetMapping("/weather")
-    public WeatherResponseDTO getWeather() {
-        return weatherService.getWeather();
+    public WeatherResponseDTO getWeather(
+            @RequestParam double lat,
+            @RequestParam double lon) {
+
+        return weatherService.getWeather(lat, lon);
     }
 }

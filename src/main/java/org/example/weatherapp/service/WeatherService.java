@@ -9,9 +9,13 @@ public class WeatherService {
 
     private final RestTemplate restTemplate = new RestTemplate();
 
-    public WeatherResponseDTO getWeather() {
+    public WeatherResponseDTO getWeather(double lat, double lon) {
 
-        String url = "https://api.open-meteo.com/v1/forecast?latitude=39.0&longitude=-75.5&current_weather=true";
+        String url =
+                "https://api.open-meteo.com/v1/forecast"
+                        + "?latitude=" + lat
+                        + "&longitude=" + lon
+                        + "&current_weather=true";
 
         return restTemplate.getForObject(url, WeatherResponseDTO.class);
     }
